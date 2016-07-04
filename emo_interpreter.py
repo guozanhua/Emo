@@ -10,7 +10,7 @@ import sys
 '''
 
 faceRepMap = OrderedDict({
-	':P' : 'print ',
+	':P' : 'sys.stdout.write(str(\\1) + "\\\\n")',
 	':p' : 'sys.stdout.write(str(\\1))',
 	'(?_?)' : 'if \\1:',
 	'(!_?)' : 'elif \\1:',
@@ -62,7 +62,7 @@ def run(fileName='example.emo'):
 			raw = re.sub(regex, repl, raw)
 		else:
 			raw = raw.replace(face, repl)
-	exec raw
+	exec(raw)
 
 if len(sys.argv) > 1:
 	run(sys.argv[1])
